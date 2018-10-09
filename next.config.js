@@ -1,3 +1,10 @@
+const withPlugins = require("next-compose-plugins");
 const withCSS = require("@zeit/next-css");
 
-module.exports = withCSS();
+module.exports = withPlugins([
+  withCSS,
+  {
+    assetPrefix:
+      process.env.NODE_ENV === "production" ? "/landing-page-next" : ""
+  }
+]);
